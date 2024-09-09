@@ -6,6 +6,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useLoginStore } from "../../../actions/clientes/login.state";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { MyRootStackScreens } from "../../navigation/ScreenNavigations";
+import { PacientesScreen } from "../pacientes/PacientesScreen";
 
 export const HomeScreen = () => {
   const navigation = useNavigation<NavigationProp<MyRootStackScreens>>();
@@ -38,6 +39,7 @@ export const HomeScreen = () => {
         >
           Mis mascotas
         </Button>
+        
       
       </ScrollView>
     </MyCustomLayout>

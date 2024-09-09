@@ -1,4 +1,4 @@
-import { Card, Input, Text } from "@ui-kitten/components";
+import { Card, Input, styled, Text } from "@ui-kitten/components";
 import { RecetaModel } from "../../../domain/models/RecetaModel";
 import { StyleSheet, View, ViewProps } from "react-native";
 import { ReactElement } from "react";
@@ -6,11 +6,6 @@ import { ReactElement } from "react";
 interface Props {
   receta: RecetaModel;
 }
-const Header = (props: ViewProps): ReactElement => (
-  <View {...props}>
-    <Text category="h6">Receta</Text>
-  </View>
-);
 
 const HeaderCard = ({ number, fecha }) => (
   <View style={styles.viewHeaderCard}>
@@ -36,19 +31,14 @@ export const RecetaCard = ({ receta }: Props) => {
         value={receta.created_at.toString()}
         disabled
       /> */}
-      <Input
-        label="Descripcion"
-        value={receta.description}
-        multiline
-        disabled
-      />
-      <Input
-        label="Indicaciones"
-        value={receta.indicaciones}
-        multiline
-        disabled
-      />
-      {/* <Input  label="Estado" value={receta.status === 0 ? 'Activo' : 'Desactivado'}  disabled/> */}
+
+
+      <Text appearance="hint" status="info">Descripcion:</Text>
+      <Text style={styles.textStyle}>{receta.description}</Text>
+
+      <Text appearance="hint" status="success">Indicaciones:</Text>
+      <Text style={styles.textStyle}>{receta.indicaciones}</Text>
+    
     </Card>
   );
 };
@@ -60,4 +50,7 @@ const styles = StyleSheet.create({
     margin: 10,
     flex: 1,
   },
+  textStyle:{
+    margin:8
+  }
 });

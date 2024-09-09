@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { MyCustomLayout } from "../../components/ui/MyCustomLayout";
-import { Text } from "@ui-kitten/components";
+import { Spinner, Text } from "@ui-kitten/components";
 import { StackScreenProps } from "@react-navigation/stack";
 import { MyRootStackScreens } from "../../navigation/ScreenNavigations";
 import { listarConsultaByIdPaciente } from "../../../actions/consulta/consulta.listar";
@@ -13,28 +13,33 @@ export const ConsultasScreen = ({ route }: Props) => {
   const { PacienteId, Nombre } = route.params;
   const pacienteIdRef = useRef(route.params.PacienteId);
 
-  const {   data: consultas=[],    isError,    isLoading,    error,  } = useQuery({
-    queryKey: ["consultas",pacienteIdRef.current],
-    queryFn: () => listarConsultaByIdPaciente(pacienteIdRef.current),    
+  const {
+    data: consultas = [],
+    isError,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["consultas", pacienteIdRef.current],
+    queryFn: () => listarConsultaByIdPaciente(pacienteIdRef.current),
   });
 
-  
   if (isLoading) {
     return (
-      <MyCustomLayout>
-        <Text>Cargando....</Text>
+      <MyCustomLayout style={{ alignItems: "center" }}>
+        <Spinner size="medium" />
       </MyCustomLayout>
     );
   }
 
   if (isError) {
     return (
-      <MyCustomLayout>
-        <Text category='h6'status='danger'>{Nombre} aun no tiene consultas registradas</Text>
+      <MyCustomLayout style={{ alignItems: "center" }}>
+        <Text category="h6" status="danger">
+          {Nombre} aun no tiene consultas registradas
+        </Text>
       </MyCustomLayout>
     );
   }
-
 
   return (
     <MyCustomLayout>
@@ -42,3 +47,5 @@ export const ConsultasScreen = ({ route }: Props) => {
     </MyCustomLayout>
   );
 };
+
+

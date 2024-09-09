@@ -56,26 +56,20 @@ export const ConsultaCard = ({ consulta }: Props) => {
       disabled
       style={{marginBottom:20}}
     >
-        
-      <Input label="Razon" value={consulta.reason} multiline disabled />
-      <Input
-        label="Antecedentes"
-        value={consulta.antecedents}
-        multiline
-        disabled
-      />
-      <Input
-        label="Enfermedades"
-        value={consulta.diseases}
-        multiline
-        disabled
-      />
-      <Input
-        label="Siguiente Consulta"
-        value={consulta.next_consult.toString()}
-        multiline
-        disabled
-      />
+
+      <Text appearance="hint"  status="info">Razon:</Text>
+      <Text style={styles.textStyle}>{consulta.reason}</Text> 
+
+      <Text appearance="hint"  status="info">Antecedentes:</Text>
+      <Text style={styles.textStyle}>{consulta.antecedents}</Text> 
+
+      <Text appearance="hint"  status="info">Enfermedades:</Text>
+      <Text style={styles.textStyle}>{consulta.diseases}</Text> 
+
+      <Text appearance="hint"  status="info">Siguiente Consulta:</Text>
+      <Text style={styles.textStyle}>{consulta.next_consult.toString()}</Text> 
+
+     
     </Card>
   );
 };
@@ -88,4 +82,7 @@ const styles = StyleSheet.create({
     margin: 10,
     flex: 1,
   },
+  textStyle:{
+    margin:8
+  }
 });

@@ -20,6 +20,15 @@ export const colors_light: ThemeColors = {
   buttonColor: "#rgb(52, 49, 206)",
 };
 
+export const colors_dark: ThemeColors = {
+  primary: "#1ead25",
+  text: "black",
+  background: "#000000",
+  cardBackground: "white",
+  buttonTextColor: "wite",
+  buttonColor: "#rgb(52, 49, 206)",
+};
+
 
 
 export const globalStyles = StyleSheet.create({

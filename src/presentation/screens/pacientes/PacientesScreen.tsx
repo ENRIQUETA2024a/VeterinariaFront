@@ -6,7 +6,7 @@ import { listarPacienteByIdCLiente } from "../../../actions/pacientes/pacientes.
 
 import { PacienteListado } from "../../components/pacientes/PacienteListado";
 import { StackScreenProps } from "@react-navigation/stack";
-import { Text } from "@ui-kitten/components";
+import { Spinner, Text } from "@ui-kitten/components";
 
 interface Props
   extends StackScreenProps<MyRootStackScreens, "PacientesScreen"> {}
@@ -26,16 +26,18 @@ export const PacientesScreen = ({ route }: Props) => {
 
   if (isLoading) {
     return (
-      <MyCustomLayout>
-        <Text>Cargando....</Text>
+      <MyCustomLayout style={{ alignItems: "center" }}>
+        <Spinner size="medium" />
       </MyCustomLayout>
     );
   }
 
   if (isError) {
     return (
-      <MyCustomLayout>
-        <Text>Error: {error.message}</Text>
+      <MyCustomLayout style={{ alignItems: "center" }}>
+        <Text category="h6" status="danger">
+          Error: {error.message}
+        </Text>
       </MyCustomLayout>
     );
   }

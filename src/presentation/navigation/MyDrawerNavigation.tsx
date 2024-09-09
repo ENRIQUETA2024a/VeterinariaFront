@@ -43,7 +43,7 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
   const navigation = useNavigation();
   const {top} =useSafeAreaInsets()  
   return (
-    <DrawerContentScrollView style={{ marginTop: 10 }}>
+    <DrawerContentScrollView style={{ marginTop: 10}}>
       <Layout style={style.imageContainer}>
         <Image source={{uri: user && user.photo}} style={style.image} defaultSource={require('../../assets/user_icon.png')}  />
       </Layout>
