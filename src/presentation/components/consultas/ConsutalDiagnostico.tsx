@@ -3,6 +3,7 @@ import { MyCustomLayout } from "../ui/MyCustomLayout";
 import { StyleSheet, View } from "react-native";
 import { DiagnosticoModel } from "../../../domain/models/Diagnosticos.model";
 import { ConsultasTratamientos } from "./ConsultasTratamientos";
+import { ScrollView } from "react-native-gesture-handler";
 
 interface Prop {
   diagnostico: DiagnosticoModel;
@@ -35,7 +36,7 @@ export const ConsutalDiagnostico = ({
 
   return (
     <>
-      <Card style={{ marginHorizontal: 20, marginTop: 20 }} status="danger">
+     <Card style={{ marginHorizontal: 20, marginTop: 20 }} status="danger">
         <Text appearance="hint" status="danger">
           Fecha Diagnostico:
         </Text>
@@ -48,8 +49,10 @@ export const ConsutalDiagnostico = ({
         </Text>
         <Text style={styles.styleText}>{diagnostico.detail}</Text>
       </Card>
-      <ConsultasTratamientos idDiagnostico={diagnostico.id}  />
+      <ConsultasTratamientos idDiagnostico={diagnostico.id} />
+    
     </>
+     
   );
 };
 const styles = StyleSheet.create({
