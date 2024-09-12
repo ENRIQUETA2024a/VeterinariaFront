@@ -6,30 +6,33 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useLoginStore } from "../../../actions/clientes/login.state";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { MyRootStackScreens } from "../../navigation/ScreenNavigations";
-import { PacientesScreen } from "../pacientes/PacientesScreen";
+import * as Notifications from 'expo-notifications';
+import { MyNotificacion } from "../../../config/notificaciones/MyNotificacion";
 
 export const HomeScreen = () => {
   const navigation = useNavigation<NavigationProp<MyRootStackScreens>>();
   const { user } = useLoginStore();
+  Notifications.scheduleNotificationAsync({
+    content: {
+      title: 'TEST ',
+      body: "TESTEEO",
+    },
+    trigger: null,
+  });
   return (
     <MyCustomLayout>
-      <ScrollView style={{marginHorizontal: 30,}}>
-        {/* {EmpleadosItems.map((item, index) => (
-          <MyMenuItem
-            key={item.component}
-            {...item}
-            isFirst={index === 0}
-            isLast={index === EmpleadosItems.length - 1}
-          ></MyMenuItem>
-        ))} */}     
-
+      <ScrollView style={{ marginHorizontal: 30 }}>
         <Button
           style={styles.button}
           size="large"
           status="basic"
           appearance="outline"
           accessoryRight={
-            <MaterialCommunityIcons name="paw-outline" size={25} color="black" />
+            <MaterialCommunityIcons
+              name="paw-outline"
+              size={25}
+              color="black"
+            />
           }
           onPress={() =>
             navigation.navigate("PacientesScreen", {
@@ -39,8 +42,7 @@ export const HomeScreen = () => {
         >
           Mis mascotas
         </Button>
-        
-      
+         <MyNotificacion /> 
       </ScrollView>
     </MyCustomLayout>
   );

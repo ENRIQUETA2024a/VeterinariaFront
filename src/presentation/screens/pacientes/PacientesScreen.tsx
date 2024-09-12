@@ -7,7 +7,7 @@ import { listarPacienteByIdCLiente } from "../../../actions/pacientes/pacientes.
 import { PacienteListado } from "../../components/pacientes/PacienteListado";
 import { StackScreenProps } from "@react-navigation/stack";
 import { Spinner, Text } from "@ui-kitten/components";
-
+import * as Notifications from 'expo-notifications';
 interface Props
   extends StackScreenProps<MyRootStackScreens, "PacientesScreen"> {}
 
@@ -24,6 +24,28 @@ export const PacientesScreen = ({ route }: Props) => {
     queryKey: ["pacientes"],
   });
 
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowAlert: true,
+      shouldPlaySound: true ,
+      shouldSetBadge: false,
+    }),
+  });
+
+  if(pacien){
+    console.log("hay data")
+    
+    // Second, call the method
+    
+    Notifications.scheduleNotificationAsync({
+      content: {
+        title: 'Parece que tienes amigos',
+        body: "Fechaaa",
+      },
+      trigger: null,
+    });
+  }
+
   if (isLoading) {
     return (
       <MyCustomLayout style={{ alignItems: "center" }}>
@@ -36,7 +58,7 @@ export const PacientesScreen = ({ route }: Props) => {
     return (
       <MyCustomLayout style={{ alignItems: "center" }}>
         <Text category="h6" status="danger">
-          Error: {error.message}
+          Parece que no hay mascotas registradas 😲
         </Text>
       </MyCustomLayout>
     );
